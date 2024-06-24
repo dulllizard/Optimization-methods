@@ -1,22 +1,24 @@
-"""
-метод Пауэлла
-"""
-
 def target_function(x: float) -> float:
-    """
-    Функция из предложенного варианта задания
-    :param x: Значение соответствующее оси абсцисс
-    :return: Значение y
+    """Функция, для которой вычисляется минимальное значение.
+
+    Args:
+        x: Значение x.
+
+    Returns:
+        float: Значение f(x).
     """
     return (x + 1) ** 2 - 7 * x + 6
 
 
 def get_function_values(x1: float, delta: float) -> tuple:
-    """
-    Получение значений функций f1, f2, f3 и их координаты x
-    :param x1: Начальная точка
-    :param delta: Величина шага
-    :return: Значения функций f1, f2, f3 и их координаты x
+    """Получает значения функции.
+
+    Args:
+        x1: Координата x1.
+        delta: Малое значение delta.
+
+    Returns:
+        tuple: Значения функции по координатам x1, x2, x3.
     """
     x2 = x1 + delta
 
@@ -34,10 +36,14 @@ def get_function_values(x1: float, delta: float) -> tuple:
 
 
 def get_minimum(function_values: tuple) -> tuple:
-    """
-    Получение минимальных значений
-    :param function_values: Значения функций f1, f2, f3 и их координаты x
-    :return: Минимальные значения
+    """Получает минимальное значение функции.
+
+    Args:
+        function_values: Значения функции.
+
+    Returns:
+        tuple: Минимальное значение функции, значение функции в точке минимума,
+        координата точки минимума, координата точки минимума.
     """
     x1, x2, x3 = function_values[1]
     f1, f2, f3 = function_values[0]
@@ -55,13 +61,16 @@ def get_minimum(function_values: tuple) -> tuple:
 
 
 def powell_method(x1: float, delta: float, epsilon_1: float, epsilon_2: float) -> float:
-    """
-    Метод квадратичной интерполяции
-    :param x1: Начальная точка
-    :param delta: Величина шага
-    :param epsilon_1: Малое положительное число, характеризующее точность
-    :param epsilon_2: Малое положительное число, характеризующее точность
-    :return: Глобальный минимум
+    """Метод Пауэла.
+
+    Args:
+        x1: Координата x1.
+        delta: Малое значение delta.
+        epsilon_1: Значание epsilon_1.
+        epsilon_2: Знение epsilon_2.
+
+    Returns:
+        float: Минимальное значение функции.
     """
     function_values = get_function_values(x1, delta)
     x1, x2, x3 = function_values[1]
@@ -92,13 +101,16 @@ def powell_method(x1: float, delta: float, epsilon_1: float, epsilon_2: float) -
 
 
 def get_amount_operations_powell_method(x1: float, delta: float, epsilon_1: float, epsilon_2: float) -> int:
-    """
-    Метод квадратичной интерполяции
-    :param x1: Начальная точка
-    :param delta: Величина шага
-    :param epsilon_1: Малое положительное число, характеризующее точность
-    :param epsilon_2: Малое положительное число, характеризующее точность
-    :return: Глобальный минимум
+    """Получает количество операций.
+
+    Args:
+        x1: Координата x1.
+        delta: Малое значение delta.
+        epsilon_1: Значение epsilon_1.
+        epsilon_2: Значение epsilon_2.
+
+    Returns:
+        int: Количество операций.
     """
     counter = 6
     function_values = get_function_values(x1, delta)
