@@ -1,34 +1,44 @@
 """
-Метод Фибоначчи
+Fibonacci Search Algorithm
 """
 
 def task_function(x: float) -> float:
     """
-    Функция из предложенного варианта задания
-    :param x: Значение соответствующее оси абсцисс
-    :return: Значение y
+    Example function for finding minimum
+
+    Args:
+        x: The value corresponding to the abscissa axis
+
+    Returns:
+        float: The value corresponding to the ordinate axis
     """
     return (x + 1) ** 2 - 7 * x + 6
 
 
 def get_fibonacci_sequence(sequence: list, n: int) -> None:
     """
-    Пополнение последовательности Фибоначчи
-    :param sequence: Последовательность Фибонначи
-    :param n: Значение n-индекса последовательности
+    Fibonacci Sequence Replenishment
+
+    Args:
+        sequence: Fibonacci sequence
+        n: Sequence n-index value
     """
     sequence.append(sequence[n - 1] + sequence[n - 2])
 
 
 def fibonacci_search(a: int, b: int, l: float, epsilon: float, target_function: callable) -> float:
     """
-    Метод Фибоначчи для поиска безусловного экстремума
-    :param a: Начало интервала неопределенности
-    :param b: Конец интервала неопределенности
-    :param l: Шаг в интервале неопределенности
-    :param epsilon: Параметр эпсилон
-    :param target_function Целевая функция
-    :return: Безусловный экстремум
+    Fibonacci method for finding an unconditional extremum
+
+    Args:
+        a: Beginning of the uncertainty interval
+        b: End of uncertainty interval
+        l: Step in the uncertainty interval
+        epsilon: Parameter epsilon
+        target_function: function for finding minimum
+
+    Returns:
+        float: Unconditional extremum
     """
     fibonacci_sequence = [1, 1]
     n = 1
