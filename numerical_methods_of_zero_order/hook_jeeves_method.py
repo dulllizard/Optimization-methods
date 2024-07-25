@@ -1,31 +1,60 @@
-import time
-
+"""
+Hook Jeeves Method.
+"""
 
 def target_function_1(x1: float, x2: float) -> float:
     """
-    Функция из предложенного варианта задания
-    :param x1: Значение соответствующее горизонтальной оси
-    :param x2: Значение соответствующее вертикальной оси
-    :return: Значение функции
+    Example function for finding minimum
+
+    Args:
+        x1: The value corresponding to the first abscissa axis.
+        x2: The value corresponding to the second abscissa axis.
+
+    Returns:
+        float: The value corresponding to the ordinate axis
     """
     return (x1 - 1) ** 2 + (x2 + x1) ** 2
 
 
-def target_function_2(x1, x2):
+def target_function_2(x1: float, x2: float) -> float:
+    """
+    Example function for finding minimum.
+
+    Args:
+        x1: The value corresponding to the first abscissa axis.
+        x2: The value corresponding to the second abscissa axis.
+
+    Returns:
+        float: The value corresponding to the ordinate axis.
+    """
     return 4 * (x1 - 5) ** 2 + (x2 - 6) ** 2
 
 
-def target_function_3(x1, x2):
+def target_function_3(x1: float, x2: float) -> float:
+    """
+    Example function for finding minimum.
+
+    Args:
+        x1: The value corresponding to the first abscissa axis.
+        x2: The value corresponding to the second abscissa axis.
+
+    Returns:
+        float: The value corresponding to the ordinate axis.
+    """
     return 2 * x1 ** 2 + x1 * x2 + x2 ** 2
 
 
 def util_search(f: callable, y: list, delta: list) -> list:
     """
-    Исследующий поиск
-    :param f: Функция
-    :param y: Базис
-    :param delta: Приращение
-    :return: Новый базис
+    Research searching.
+
+    Args:
+        f: Function for finding minimum.
+        y: Basis.
+        delta: Increment.
+
+    Returns:
+        list: New basis.
     """
     fy = f(*y)
     if f(*(y[0] + delta[0], y[1])) < fy:
@@ -44,11 +73,15 @@ def util_search(f: callable, y: list, delta: list) -> list:
 
 def sample_search(x: list, y: list, lmbda: float) -> list:
     """
-    Поиск по образцу
-    :param x: Прошлый базис
-    :param y: Нынешний базис
-    :param lmbda: Ускоряющий множитель
-    :return: Новый базис
+    Searching by sample.
+
+    Args:
+        x: Old basis.
+        y: Current basis.
+        lmbda: Acceleration multiplier.
+
+    Returns:
+        list: New basis.
     """
     y = [y[0] + lmbda * (y[0] - x[0]), y[1] + lmbda * (y[1] - x[1])]
     return y
@@ -56,14 +89,18 @@ def sample_search(x: list, y: list, lmbda: float) -> list:
 
 def hook_jeeves_method(f: callable, x0: list, delta: list, epsilon: float, lmbda: float, alpha: int) -> list:
     """
-    Метод конфигураций (метод Хука — Дживса [R. Hooke, T. A. Jeeves])
-    :param f: Функция
-    :param x0: Начальная точка
-    :param delta: Приращение
-    :param epsilon: число > 0 для остановки алгоритма
-    :param lmbda: Ускоряющий множитель
-    :param alpha: Коэффициент уменьшения шага
-    :return: Координаты минимума функции
+    Method of configurations (Hooke-Jeeves method [R. Hooke, T. A. Jeeves]).
+
+    Args:
+        f: Function for finding minimum.
+        x0:  Starting point.
+        delta: Increment.
+        epsilon: Number greater than 0 to stop the algorithm.
+        lmbda: Acceleration multiplier.
+        alpha: Step reduction factor.
+
+    Returns:
+        list: Coordinates of the minimum function.
     """
     y = x0.copy()
     x = x0.copy()
@@ -88,16 +125,3 @@ def hook_jeeves_method(f: callable, x0: list, delta: list, epsilon: float, lmbda
             y = util_search(f, y, delta)
 
     return y
-
-
-# print(hook_jeeves_method(target_function_2, [8, 9], [1, 2], 0.3, 1, 2))
-start = time.time()
-print(hook_jeeves_method(target_function_1, [9, 8], [1, 2], 0.1, 1, 2))
-end = time.time()
-print(end - start)
-# print(hook_jeeves_method(target_function_3, [0.5, 1], [0.2, 0.4], 0.1, 1.5, 4))
-
-# print(target_function_2(3, 3))
-# print(target_function_2(4, 3))
-# print(target_function_2(4, 5))
-# print(target_function_2(4, 3))
