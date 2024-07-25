@@ -1,24 +1,30 @@
+"""
+Powell's Method.
+"""
+
 def target_function(x: float) -> float:
-    """Функция, для которой вычисляется минимальное значение.
+    """
+    Example function for finding minimum
 
     Args:
-        x: Значение x.
+        x: The value corresponding to the abscissa axis
 
     Returns:
-        float: Значение f(x).
+        float: The value corresponding to the ordinate axis
     """
     return (x + 1) ** 2 - 7 * x + 6
 
 
 def get_function_values(x1: float, delta: float) -> tuple:
-    """Получает значения функции.
+    """
+    Get function values.
 
     Args:
-        x1: Координата x1.
-        delta: Малое значение delta.
+        x1: Coordinate x1.
+        delta: Small value delta.
 
     Returns:
-        tuple: Значения функции по координатам x1, x2, x3.
+        tuple: Function values at coordinates x1, x2, x3.
     """
     x2 = x1 + delta
 
@@ -36,14 +42,15 @@ def get_function_values(x1: float, delta: float) -> tuple:
 
 
 def get_minimum(function_values: tuple) -> tuple:
-    """Получает минимальное значение функции.
+    """
+    Get function minimum.
 
     Args:
-        function_values: Значения функции.
+        function_values: Function values.
 
     Returns:
-        tuple: Минимальное значение функции, значение функции в точке минимума,
-        координата точки минимума, координата точки минимума.
+        tuple: Minimum value of a function, value of a function at the minimum point,
+        minimum point coordinate, minimum point coordinate.
     """
     x1, x2, x3 = function_values[1]
     f1, f2, f3 = function_values[0]
@@ -61,16 +68,17 @@ def get_minimum(function_values: tuple) -> tuple:
 
 
 def powell_method(x1: float, delta: float, epsilon_1: float, epsilon_2: float) -> float:
-    """Метод Пауэла.
+    """
+    Powell's Method. It finds minimum of a function.
 
     Args:
-        x1: Координата x1.
-        delta: Малое значение delta.
-        epsilon_1: Значание epsilon_1.
-        epsilon_2: Знение epsilon_2.
+        x1: Coordinate x1.
+        delta: Small value delta.
+        epsilon_1: Value epsilon_1.
+        epsilon_2: Value epsilon_2.
 
     Returns:
-        float: Минимальное значение функции.
+        float: Function minimum.
     """
     function_values = get_function_values(x1, delta)
     x1, x2, x3 = function_values[1]
@@ -101,16 +109,17 @@ def powell_method(x1: float, delta: float, epsilon_1: float, epsilon_2: float) -
 
 
 def get_amount_operations_powell_method(x1: float, delta: float, epsilon_1: float, epsilon_2: float) -> int:
-    """Получает количество операций.
+    """
+    Get amount of operations.
 
     Args:
-        x1: Координата x1.
-        delta: Малое значение delta.
-        epsilon_1: Значение epsilon_1.
-        epsilon_2: Значение epsilon_2.
+        x1: Coordinate x1.
+        delta: Small value delta.
+        epsilon_1: Value epsilon_1.
+        epsilon_2: Value epsilon_2.
 
     Returns:
-        int: Количество операций.
+        Amount of operations.
     """
     counter = 6
     function_values = get_function_values(x1, delta)
